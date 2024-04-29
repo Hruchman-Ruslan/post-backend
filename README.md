@@ -1,0 +1,1 @@
+This project serves as the backend specifically designed to support the frontend component of the "post" project. It provides necessary functionalities and data access for the frontend to interact with the backend server efficiently.
