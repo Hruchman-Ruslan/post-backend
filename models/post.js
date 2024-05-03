@@ -1,16 +1,23 @@
 import { Schema, model } from "mongoose";
 
-const PostSchema = new Schema({
-  body: {
-    type: String,
-    require: true,
-  },
-  author: {
-    type: String,
-    require: true,
-  },
-});
+import { handleSaveError } from "./hooks.js";
 
-const Post = model("post", PostSchema);
+const postSchema = new Schema(
+  {
+    body: {
+      type: String,
+      required: true,
+    },
+    author: {
+      type: String,
+      required: true,
+    },
+  },
+  { versionKey: false, timestamps: true }
+);
+
+postSchema.post("save", handleSaveError);
+
+const Post = model("post", postSchema);
 
 export default Post;
